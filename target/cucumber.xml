@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite failures="1" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="1" time="103.962469">
+<testcase classname="Facebook automation" name="Facebook notification scrolldown functionality test" time="103.962469">
+<failure message="org.openqa.selenium.WebDriverException: chrome not reachable&#10;  (Session info: chrome=55.0.2883.87)&#10;  (Driver info: chromedriver=2.25.426923 (0390b88869384d6eb0d5d09729679f934aab9eed),platform=Windows NT 10.0.14393 x86_64) (WARNING: The server did not provide any stacktrace information)&#10;Command duration or timeout: 4.03 seconds&#10;Build info: version: '2.49.1', revision: '7203e46', time: '2016-01-21 17:35:35'&#10;System info: host: 'Hasan', ip: '192.168.56.1', os.name: 'Windows 8.1', os.arch: 'amd64', os.version: '6.3', java.version: '1.8.0_05'&#10;Driver info: org.openqa.selenium.chrome.ChromeDriver&#10;Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.25.426923 (0390b88869384d6eb0d5d09729679f934aab9eed), userDataDir=C:\Users\Mohammad\AppData\Local\Temp\scoped_dir4444_23208}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=55.0.2883.87, platform=WIN8_1, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]&#10;Session ID: f03cd0d9bfd330484bfc644a60cb1df6&#10;*** Element info: {Using=link text, value=Friends Tourism}&#13;&#10;&#9;at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)&#13;&#10;&#9;at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)&#13;&#10;&#9;at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)&#13;&#10;&#9;at java.lang.reflect.Constructor.newInstance(Constructor.java:408)&#13;&#10;&#9;at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)&#13;&#10;&#9;at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)&#13;&#10;&#9;at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:678)&#13;&#10;&#9;at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:363)&#13;&#10;&#9;at org.openqa.selenium.remote.RemoteWebDriver.findElementByLinkText(RemoteWebDriver.java:428)&#13;&#10;&#9;at org.openqa.selenium.By$ByLinkText.findElement(By.java:246)&#13;&#10;&#9;at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)&#13;&#10;&#9;at com.facebook.runner.WebConnector.verifyClickedObject(Unknown Source)&#13;&#10;&#9;at com.facebook.stepDefinition.StepDefinition.verify_you_clicked_on_right_notification_if_possible(Unknown Source)&#13;&#10;&#9;at ✽.And Verify you clicked on right notification (if possible)(fbnotification.feature:15)&#13;&#10;"><![CDATA[Given Open Browser "Browser_name" and Go to the Facebook "Site_url".........passed
+Then Login to Facebook......................................................passed
+When Click on "Notifications_object"........................................passed
+Then scroll down "Object_lists" till last notification of "November 8 at 9:22pm",print notification name and click on that_notification_object.passed
+And Verify you clicked on right notification (if possible)..................failed
+
+StackTrace:
+org.openqa.selenium.WebDriverException: chrome not reachable
+  (Session info: chrome=55.0.2883.87)
+  (Driver info: chromedriver=2.25.426923 (0390b88869384d6eb0d5d09729679f934aab9eed),platform=Windows NT 10.0.14393 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 4.03 seconds
+Build info: version: '2.49.1', revision: '7203e46', time: '2016-01-21 17:35:35'
+System info: host: 'Hasan', ip: '192.168.56.1', os.name: 'Windows 8.1', os.arch: 'amd64', os.version: '6.3', java.version: '1.8.0_05'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.25.426923 (0390b88869384d6eb0d5d09729679f934aab9eed), userDataDir=C:\Users\Mohammad\AppData\Local\Temp\scoped_dir4444_23208}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=55.0.2883.87, platform=WIN8_1, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
+Session ID: f03cd0d9bfd330484bfc644a60cb1df6
+*** Element info: {Using=link text, value=Friends Tourism}
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:408)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:678)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:363)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByLinkText(RemoteWebDriver.java:428)
+	at org.openqa.selenium.By$ByLinkText.findElement(By.java:246)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
+	at com.facebook.runner.WebConnector.verifyClickedObject(Unknown Source)
+	at com.facebook.stepDefinition.StepDefinition.verify_you_clicked_on_right_notification_if_possible(Unknown Source)
+	at ✽.And Verify you clicked on right notification (if possible)(fbnotification.feature:15)
+]]></failure>
+</testcase>
+</testsuite>

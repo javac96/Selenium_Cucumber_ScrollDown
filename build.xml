@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     Dec 16, 2016 8:32:49 PM                                                        
+
+     Facebook notifications functionality check
+                   
+     Hasan                                                                
+     ====================================================================== -->
+<project name="Facebook" default="usage" basedir = ".">
+   
+    		<property name="ws.home" value="${basedir}" />
+    		<property name="ws.jars" value="${ws.home}/lib" />
+    		<property name="test.dest" value="${ws.home}/build" />
+    		<property name="test.src" value="${ws.home}/src" />
+    
+
+	<path id="testcase.path">
+			<pathelement location="${test.dest}" />
+			<fileset dir="${ws.jars}">
+				<include name="*.jar" />
+			</fileset>
+		</path>
+
+		<target name="setClassPath" unless="test.classpath">
+			<path id="classpath_jars">
+				<fileset dir="${ws.jars}" includes="*.jar" />
+			</path>
+			<pathconvert pathsep=":" property="test.classpath" refid="classpath_jars" />
+		</target>
+
+		<target name="init" depends="setClassPath">
+			<tstamp>
+				<format property="start.time" pattern="MM/dd/yyyy hh:mm aa" />
+			</tstamp>
+			<condition property="ANT" value="${env.ANT_HOME}/bin/ant.bat" else="${env.ANT_HOME}/bin/ant">
+				<os family="windows" />
+			</condition>
+
+		</target>
+    <!-- ================================= 
+          target: default              
+         ================================= -->
+    <target name="usage">
+    	<echo>
+    	      ant run will execute the test
+    	 </echo>
+    </target>
+
+    <!-- - - - - - - - - - - - - - - - - - 
+          target: depends                      
+         - - - - - - - - - - - - - - - - - -->
+	<!-- clean -->
+		<target name="clean">
+			<delete dir="${test.dest}" />
+		</target>
+
+		<!-- compile -->
+		<target name="compile" depends="clean">
+			<mkdir dir="${test.dest}" />
+			<javac srcdir="${test.src}" destdir="${test.dest}" classpathref="testcase.path" includeantruntime="false" />
+			<!--  <copy file="src/log4j.properties" todir="build/"/>  -->
+		</target>
+
+		<!-- build -->
+		<target name="build" depends="init">
+		</target>
+	
+	<target name="test" depends="compile">
+			<junit printsummary="on" haltonfailure="yes" fork="true">
+				<classpath>
+					<path refid="testcase.path" />
+					<pathelement location="${test.dest}" />
+				</classpath>
+				<formatter type="brief" usefile="false" />
+				<batchtest>
+					<fileset dir="${test.src}" includes="**/*Runner.java" />
+
+				</batchtest>
+			</junit>
+		</target>
+	
+	<target name="runcukes" depends="compile">
+			<mkdir dir="target/cucumber-junit-report" />
+			<java classname="cucumber.api.cli.Main" fork="true" failonerror="false" resultproperty="cucumber.exitstatus">
+				<classpath refid="testcase.path" />
+				<arg value="--glue" />
+				<arg value="src/com/van/*" />
+
+				<arg value="--plugin" />
+				<arg value="junit:target/cucumber.xml" />
+				<arg value="--plugin" />
+				<arg value="pretty" />
+				<arg value="--plugin" />
+				<arg value="html:target/Cucumber_Reports" />
+				<arg value="--plugin" />
+				<arg value="json:target/cucumber.json" />
+
+				<arg value="--plugin" />
+
+				<arg value="com.cucumber.listener.ExtentCucumberFormatter" />
+
+				<arg value="features/*.feature" />
+
+			</java>
+
+			<junitreport todir="target/cucumber-junit-report">
+				<fileset dir="target/cucumber-junit-report">
+					<include name="allcukes.xml" />
+				</fileset>
+				<report format="frames" todir="target/cucumber-junit-report" />
+			</junitreport>
+
+			<fail message="Cucumber failed">
+				<condition>
+					<not>
+						<equals arg1="${cucumber.exitstatus}" arg2="0" />
+					</not>
+				</condition>
+			</fail>
+		</target>
+
+
+
+</project>
