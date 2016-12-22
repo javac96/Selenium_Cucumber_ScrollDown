@@ -7,9 +7,9 @@ Feature: Facebook automation
   @scroll_check
   Scenario Outline: Facebook notification scrolldown functionality test
     Then Login to Facebook
-      | Fields   | value           |
-      | userid   | abcd@domain.com |
-      | password | password        |
+      | Fields   | value               |
+      | userid   | username@domain.com |
+      | password | password            |
     When Click on "Notifications_object"
     Then scroll down "Object_lists" till last notification of "<time_stamp>",print notification name and click on that_notification_object
     And Verify you clicked on right notification (if possible)
